@@ -1,0 +1,22 @@
+<hibernate-configuration>
+    <session-factory>
+
+        <property name="dialect">
+            org.hibernate.dialect.H2Dialect
+        </property>
+
+        <property name="hbm2ddl.auto">
+            update
+        </property>
+
+        <property name="show_sql">true</property>
+
+        <mapping class="com.tejatummalapalli.instateam.model.Role"/>
+        <mapping class="com.tejatummalapalli.instateam.model.Collaborator"/>
+        <mapping class="com.tejatummalapalli.instateam.model.Project"/>
+
+
+    </session-factory>
+
+
+</hibernate-configuration>
