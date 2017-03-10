@@ -1,5 +1,6 @@
 package com.tejatummalapalli.instateam.web.controller;
 
+import com.tejatummalapalli.instateam.dao.ProjectDao;
 import com.tejatummalapalli.instateam.model.Project;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,14 +14,13 @@ import java.util.List;
 
 @Controller
 public class ProjectController {
+
     @Autowired
-    private SessionFactory sessionFactory;
+    ProjectDao projectDao;
 
     @RequestMapping("/projects")
     public String listProjects(Model model) {
-        //TODO : Get all Projects
-        Session session = sessionFactory.openSession();
-        List<Project> projects = session.createCriteria(Project.class).list();
+        List<Project> projects= projectDao.findAll();
         model.addAttribute("projects",projects);
         return "index";
     }
