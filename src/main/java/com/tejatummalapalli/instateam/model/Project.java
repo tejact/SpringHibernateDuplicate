@@ -10,13 +10,17 @@ public class Project {
     int id;
     String name;
     String description;
+    private String slug;
+
 
     @ManyToMany
-    List<Role> rolesNeeded;
+    List<Role> roles;
 
     @ManyToMany
     List<Collaborator> collaborators;
 
+
+    //Default constructor for JPA
     public Project() {
     }
 
@@ -44,12 +48,12 @@ public class Project {
         this.description = description;
     }
 
-    public List<Role> getRolesNeeded() {
-        return rolesNeeded;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setRolesNeeded(List<Role> rolesNeeded) {
-        this.rolesNeeded = rolesNeeded;
+    public void setRoles(List<Role> rolesNeeded) {
+        this.roles = rolesNeeded;
     }
 
     public List<Collaborator> getCollaborators() {
@@ -58,5 +62,13 @@ public class Project {
 
     public void setCollaborators(List<Collaborator> collaborators) {
         this.collaborators = collaborators;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 }

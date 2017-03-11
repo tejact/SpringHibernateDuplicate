@@ -17,4 +17,14 @@ public class ProjectServiceImpl implements ProjectService {
     public List<Project> findAll() {
         return projectDao.findAll();
     }
+
+    @Override
+    public void saveProject(Project project) {
+        projectDao.saveProject(project);
+    }
+
+    @Override
+    public Project findProjectBySlug(String slug) {
+        return projectDao.findProjectBySlug(slug);
+    }
 }

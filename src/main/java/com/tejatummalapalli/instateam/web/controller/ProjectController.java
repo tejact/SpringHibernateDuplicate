@@ -8,7 +8,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,5 +26,18 @@ public class ProjectController {
         List<Project> projects= projectService.findAll();
         model.addAttribute("projects",projects);
         return "index";
+    }
+
+    @RequestMapping(value = "/save-project", method = RequestMethod.POST)
+    public String saveProject(Project project){
+        projectService.saveProject(project);
+        return "redirect:/index";
+    }
+
+    @RequestMapping("/projects/{slug}")
+     public String getProjectFromSlug(@PathVariable String slug, Model model){
+        Project project = projectService.findProjectBySlug(slug);
+        model.addAttribute("project",project);
+        return "project_detail";
     }
 }

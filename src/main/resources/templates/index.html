@@ -27,38 +27,13 @@
         </nav>
         <section>
             <div class="container wrapper">
-                <div class="project-list">
+                <div class="project-list" th:each="project : ${projects}">
                     <div class="project">
-                        <h2><a href="project_detail.html">Website Project</a></h2>
-                        <p>Design and build a custom website</p>
-                        <span class="tag active">Active</span>
-                    </div>
-                    <div class="project">
-                        <h2><a href="#">App Project</a></h2>
-                        <p>Design and build a web app</p>
-                        <span class="tag active">Active</span>
-                    </div>
-                    <div class="project">
-                        <h2><a href="#">Poster Design</a></h2>
-                        <p>Create a poster design</p>
-                        <span class="tag archived">Archived</span>
-                    </div>
-                    <div class="project">
-                        <h2><a href="#">Mobile App</a></h2>
-                        <p>Design and build a mobile app</p>
+                        <h2><a th:href="@{|/projects/${project.slug}|}" th:text="${project.name}" >Website Project</a></h2>
+                        <p th:text="${project.description}">Design and build a custom website</p>
                         <span class="tag active">Active</span>
                     </div>
                 </div>
-            </div>
-
-            <!--            Extra code        -->
-            <div th:text="${projects}">
-                Hello
-            </div>
-
-            <b>Dynamically fetched projects are</b>
-            <div th:each="project : ${projects}" class="col s12 l4">
-               <div th:text="${project.name}">Hello</div>
             </div>
         </section>
     </body>
