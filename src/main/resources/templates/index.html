@@ -31,10 +31,12 @@
                     <div class="project">
                         <h2><a th:href="@{|/projects/${project.slug}|}" th:text="${project.name}" >Website Project</a></h2>
                         <p th:text="${project.description}">Design and build a custom website</p>
-                        <span class="tag active">Active</span>
+                        <!--TODO: Change attribute class to dynamic one-->
+                        <span class="tag active" th:text="${project.status}">Active</span>
                     </div>
                 </div>
             </div>
+
         </section>
     </body>
 </html>
