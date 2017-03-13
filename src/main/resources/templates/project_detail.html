@@ -38,7 +38,7 @@
                         <div class="list-item" th:each="role : ${project.roles}">
                             <div class="project">
                                 <span class="primary" th:text="${role.name}">role</span>
-                                <span class="secondary" th:text="${roleCollaboratorMap.get(role).name}">
+                                <span class="secondary" th:text="${roleCollaboratorMap?.get(role)?.name}">
                                     Michael Pemulis
                                 </span>
                             </div>
