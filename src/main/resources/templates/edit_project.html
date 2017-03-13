@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8"/>
         <meta http-equiv="x-ua-compatible" content="ie=edge"/>
         <title>InstaTeam</title>
         <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'/>
@@ -27,14 +27,15 @@
         </nav>
         <section>
             <div class="container wrapper">
-                <form>
+                <form th:action="@{/save-project}" method="post" th:object="${project}">
                     <div>
                         <label for="project_name"> Project Name:</label>
-                        <input type="text" name="project_name">
+                        <!--Todo: Mis alignment of the project name-->
+                        <input type="text" name="project_name" th:field="*{name}"/>
                     </div>
                     <div>
-                        <label for="project_description">Project Description:</label>
-                        <textarea rows="4" name="project_description"></textarea>
+                        <label for="project_description" >Project Description:</label>
+                        <textarea rows="4" name="project_description" th:field="*{description}"/>
                     </div>
                     <div>
                         <label for="project_status">Project Status:</label>
@@ -51,25 +52,25 @@
                         <label for="project_roles">Project Roles:</label>
                         <ul class="checkbox-list">
                             <li>
-                                <input type="checkbox" name="project_roles" value="Developer">
+                                <input type="checkbox" name="project_roles" value="Developer"/>
                                 <span class="primary"> Developer</span>
                             </li>
                             <li>
-                                <input type="checkbox" name="project_roles" value="Designer">
+                                <input type="checkbox" name="project_roles" value="Designer"/>
                                 <span class="primary"> Designer</span>
                             </li>
                             <li>
-                                <input type="checkbox" name="project_roles" value="QA">
+                                <input type="checkbox" name="project_roles" value="QA"/>
                                 <span class="primary"> QA</span>
                             </li>
                             <li>
-                                <input type="checkbox" name="project_roles" value="DevOps">
+                                <input type="checkbox" name="project_roles" value="DevOps"/>
                                 <span class="primary"> DevOps</span>
                             </li>
                         </ul>
                     </div>
                     <div class="actions">
-                        <input type="submit" value="Save" class="button">
+                        <input type="submit" value="Save" class="button"/>
                         <a href="#" class="button button-secondary">Cancel</a>
                     </div>
                 </form>

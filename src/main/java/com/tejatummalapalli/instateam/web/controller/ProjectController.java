@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.enterprise.context.RequestScoped;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,8 +36,9 @@ public class ProjectController {
     @RequestMapping(value = "/save-project", method = RequestMethod.POST)
     public String saveProject(Project project){
         projectService.saveProject(project);
-        return "redirect:/index";
+        return "redirect:/projects";
     }
+
 
     @RequestMapping("/projects/{slug}")
      public String getProjectFromSlug(@PathVariable String slug, Model model){
@@ -46,4 +48,12 @@ public class ProjectController {
         model.addAttribute("roleCollaboratorMap",roleCollaboratorMap);
         return "project_detail";
     }
+
+    @RequestMapping("/edit-project/{slug}")
+    public String editProjectFromSlug(@PathVariable String slug,Model model) {
+        Project project = projectService.findProjectBySlug(slug);
+        model.addAttribute("project",project);
+        return "edit_project";
+    }
+
 }
