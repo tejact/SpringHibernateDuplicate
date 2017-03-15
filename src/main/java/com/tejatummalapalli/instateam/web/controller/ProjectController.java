@@ -5,6 +5,7 @@ import com.tejatummalapalli.instateam.model.Collaborator;
 import com.tejatummalapalli.instateam.model.Project;
 import com.tejatummalapalli.instateam.model.Role;
 import com.tejatummalapalli.instateam.service.ProjectService;
+import com.tejatummalapalli.instateam.service.RoleService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class ProjectController {
 
     @Autowired
     ProjectService projectService;
+    @Autowired
+    RoleService roleService;
+
 
     @RequestMapping("/projects")
     public String listProjects(Model model) {
@@ -52,7 +56,9 @@ public class ProjectController {
     @RequestMapping("/edit-project/{slug}")
     public String editProjectFromSlug(@PathVariable String slug,Model model) {
         Project project = projectService.findProjectBySlug(slug);
+        List<Role> allRoles = roleService.getAllRoles();
         model.addAttribute("project",project);
+        model.addAttribute("allRoles",allRoles);
         return "edit_project";
     }
 
