@@ -30,7 +30,7 @@ public class ProjectController {
     RoleService roleService;
 
 
-    @RequestMapping("/projects")
+    @RequestMapping(value={"","/","/projects","index"})
     public String listProjects(Model model) {
         List<Project> projects= projectService.findAll();
         model.addAttribute("projects",projects);
@@ -38,6 +38,7 @@ public class ProjectController {
     }
 
     @RequestMapping(value = "/save-project", method = RequestMethod.POST)
+    //Todo : you cannot directly pass project as argument
     public String saveProject(Project project){
         projectService.saveProject(project);
         return "redirect:/projects";
@@ -61,5 +62,8 @@ public class ProjectController {
         model.addAttribute("allRoles",allRoles);
         return "edit_project";
     }
+
+
+
 
 }

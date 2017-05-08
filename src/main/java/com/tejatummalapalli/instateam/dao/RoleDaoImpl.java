@@ -23,4 +23,13 @@ public class RoleDaoImpl implements RoleDao {
         return roles;
     }
 
+    @Override
+    public void addRole(Role role) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.save(role);
+        session.getTransaction().commit();
+        session.close();
+    }
+
 }
