@@ -12,10 +12,14 @@ public class CollaboratorServiceImpl implements CollaboratorService {
     @Autowired
     CollaboratorDao  collaboratorDao;
 
-
     @Override
     public List<Collaborator> getAllCollaborators() {
         List<Collaborator> collaborators = collaboratorDao.getAllCollaborators();
         return collaborators;
+    }
+
+    @Override
+    public void addCollaborator(Collaborator collborator) {
+        collaboratorDao.addCollaborator(collborator);
     }
 }

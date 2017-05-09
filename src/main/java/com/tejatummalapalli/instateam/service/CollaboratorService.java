@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface CollaboratorService {
     List<Collaborator> getAllCollaborators();
+    void addCollaborator(Collaborator collborator);
 }
