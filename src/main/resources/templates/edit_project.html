@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="utf-8"/>
-        <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-        <title>InstaTeam</title>
-        <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'/>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-        <link rel="stylesheet" href="/css/normalize.css"/>
-        <link rel="stylesheet" href="/css/site.css"/>
-    </head>
+<head th:replace="fragments/header"/>
     <body>
         <header>
             <div class="container">
@@ -50,37 +42,21 @@
                     </div>
                     <div>
                         <label for="project_roles">Project Roles:</label>
-                        <!--<ul class="checkbox-list">
-                            <li>
-                                <input type="checkbox" name="project_roles" value="Developer" th:field="*{roles}"/>
-                                <span class="primary"> Developer</span>
-                            </li>
-                            <li>
-                                <input type="checkbox" name="project_roles" value="Designer"  th:field="*{roles}/>
-                                <span class="primary"> Designer</span>
-                            </li>
-                            <li>
-                                <input type="checkbox" name="project_roles" value="QA" th:field="*{roles}/>
-                                <span class="primary"> QA</span>
-                            </li>
-                            <li>
-                                <input type="checkbox" name="project_roles" value="DevOps" th:field="*{roles}/>
-                                <input type="checkbox" name="project_roles" value="DevOps" th:field="*{roles}/>
-                                <span class="primary"> DevOps</span>
-                            </li>
-                        </ul>-->
 
-                        <ul class="checkbox-list" th:each="currentRole : ${allRoles}">
-                            <li>
-                                <input type="checkbox" th:field="*{roles}" th:value="${currentRole.id}"/>
-                                <span class="primary" th:text="${currentRole.name}">Role</span>
+                        <ul class="checkbox-list">
+                            <!--TODO: Roles not getting saved-->
+                            <li th:each="role : ${allRoles}">
+                                <input type="checkbox" th:field="*{roles}" th:value="${role.id}"/>
+                                <span class="primary" th:text=" ${role.name}"></span>
                             </li>
                         </ul>
 
 
                     </div>
                     <div class="actions">
+                        <!--These hidden fileds are very important..they are sent,because while creation of object these are required-->
                         <input type="hidden" th:field="*{id}"/>
+                        <input type="hidden" th:field="*{slug}"/>
                         <input type="submit" value="Save Project"  class="button"/>
                         <a href="#" class="button button-secondary">Cancel</a>
                     </div>

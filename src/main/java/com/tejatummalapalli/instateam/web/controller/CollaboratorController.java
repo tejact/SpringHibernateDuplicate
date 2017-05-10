@@ -37,6 +37,6 @@ public class CollaboratorController {
     @RequestMapping(value = "/add-collaborator",method = RequestMethod.POST)
     public String addCollaborator(@ModelAttribute Collaborator collborator, Model model){
         collaboratorService.addCollaborator(collborator);
-        return "collaborators";
+        return "redirect:/collaborators";
     }
 }

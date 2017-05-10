@@ -1,6 +1,7 @@
 package com.tejatummalapalli.instateam.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,10 +16,10 @@ public class Project {
 
 
     @ManyToMany
-    List<Role> roles;
+    List<Role> roles = new ArrayList<>();
 
     @ManyToMany
-    List<Collaborator> collaborators;
+    List<Collaborator> collaborators = new ArrayList<>();
 
 
     //Default constructor for JPA

@@ -33,15 +33,15 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Map<Role, Collaborator> getRoleWithCollaborator(Project project) {
-        Map<Role,Collaborator> roleWithCollaborator = new HashMap<>();
+    public Map<Role, List<Collaborator>> getRoleWithCollaborator(Project project) {
+        Map<Role, List<Collaborator>> roleWithCollaborator = new HashMap<>();
         List<Role> roles = project.getRoles();
         List<Collaborator> collaborators = project.getCollaborators();
         //Todo: Handle nulls here. What if there is no collab for a particular role
         for(Role role : roles) {
             for(Collaborator collaborator : collaborators) {
                 if(collaborator.getRole().equals(role)) {
-                    roleWithCollaborator.put(role,collaborator);
+                    roleWithCollaborator.put(role,collaborators);
                 }
             }
         }
