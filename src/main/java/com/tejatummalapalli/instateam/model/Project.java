@@ -54,8 +54,8 @@ public class Project {
         return roles;
     }
 
-    public void setRoles(List<Role> rolesNeeded) {
-        this.roles = rolesNeeded;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     public List<Collaborator> getCollaborators() {

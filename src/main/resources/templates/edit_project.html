@@ -1,22 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header"/>
+<head th:replace="fragments/layout :: head"/>
     <body>
-        <header>
-            <div class="container">
-                <div class="site-header">
-                    <a class="logo" href="index.html">InstaTeam</a>
-                    <a class="new-project button icon-left" href="#"><i class="material-icons">add</i> New Project</a>
-                </div>
-            </div>
-        </header>
-        <nav>
-            <ul>
-                <li class="selected"><a href="index.html">Projects</a></li>
-                <li><a href="collaborators.html">Collaborators</a></li>
-                <li><a href="roles.html">Roles</a></li>
-            </ul>
-        </nav>
+        <header th:replace="fragments/layout :: header"/>
+        <nav th:replace="fragments/layout :: nav"/>
         <section>
             <div class="container wrapper">
                 <form th:action="@{/save-project}" method="post" th:object="${project}">
@@ -47,10 +34,9 @@
                             <!--TODO: Roles not getting saved-->
                             <li th:each="role : ${allRoles}">
                                 <input type="checkbox" th:field="*{roles}" th:value="${role.id}"/>
-                                <span class="primary" th:text=" ${role.name}"></span>
+                                <span class="primary" th:text="${role.name}"> Developer</span>
                             </li>
                         </ul>
-
 
                     </div>
                     <div class="actions">

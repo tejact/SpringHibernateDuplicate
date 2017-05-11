@@ -52,6 +52,7 @@ public class ProjectController {
     public String editProjectFromSlug(@PathVariable String slug,Model model) {
         Project project = projectService.findProjectBySlug(slug);
         List<Role> allRoles = roleService.getAllRoles();
+        //Two objects are added to the model
         model.addAttribute("project",project);
         model.addAttribute("allRoles",allRoles);
         return "edit_project";
