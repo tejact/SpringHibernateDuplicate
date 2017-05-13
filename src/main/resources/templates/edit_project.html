@@ -31,9 +31,8 @@
                         <label for="project_roles">Project Roles:</label>
 
                         <ul class="checkbox-list">
-                            <!--TODO: Roles not getting saved-->
-                            <li th:each="role : ${allRoles}">
-                                <input type="checkbox" th:field="*{roles}" th:value="${role.id}"/>
+                            <li th:each="role,stat : ${allRoles}">
+                                <input type="checkbox" th:value="${role.id}" th:field="*{roles[__${stat.index}__].id}"/>
                                 <span class="primary" th:text="${role.name}"> Developer</span>
                             </li>
                         </ul>

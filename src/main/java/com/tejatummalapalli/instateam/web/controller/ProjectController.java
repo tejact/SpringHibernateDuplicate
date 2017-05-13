@@ -32,19 +32,11 @@ public class ProjectController {
         return "index";
     }
 
-    @RequestMapping(value = "/save-project", method = RequestMethod.POST)
-    public String saveProject(@ModelAttribute Project project,Model model){
-        projectService.saveProject(project);
-        return "redirect:/projects";
-    }
-
-
+    //Project Details Page
     @RequestMapping("/projects/{slug}")
      public String getProjectFromSlug(@PathVariable String slug, Model model){
         Project project = projectService.findProjectBySlug(slug);
         model.addAttribute("project",project);
-        Map<Role,List<Collaborator>> roleCollaboratorMap = projectService.getRoleWithCollaborator(project);
-        model.addAttribute("roleCollaboratorMap",roleCollaboratorMap);
         return "project_detail";
     }
 
@@ -56,6 +48,12 @@ public class ProjectController {
         model.addAttribute("project",project);
         model.addAttribute("allRoles",allRoles);
         return "edit_project";
+    }
+
+    @RequestMapping(value = "/save-project", method = RequestMethod.POST)
+    public String saveProject(@ModelAttribute Project project,Model model){
+        projectService.saveProject(project);
+        return "redirect:/projects";
     }
 
     @RequestMapping("/edit-collaborators/{slug}")

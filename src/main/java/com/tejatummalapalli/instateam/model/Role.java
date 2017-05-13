@@ -33,7 +33,6 @@ public class Role {
         this.name = name;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -41,12 +40,12 @@ public class Role {
 
         Role role = (Role) o;
 
-        return name != null ? name.equals(role.name) : role.name == null;
+        return id == role.id;
 
     }
 
     @Override
     public int hashCode() {
-        return name != null ? name.hashCode() : 0;
+        return id;
     }
 }

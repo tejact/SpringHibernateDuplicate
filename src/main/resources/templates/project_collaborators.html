@@ -9,39 +9,11 @@
                 <form>
                     <label>Edit Collaborators: Website Project</label>
                     <ul class="checkbox-list">
-                        <li><span class="primary">Developer</span>
+                        <li><span class="primary" th:each = "roleCollabElement : ${allRolesWithCollaborators}" th:text = "${roleCollabElement.key}">Developer</span>
                             <div class="custom-select">
                                 <span class="dropdown-arrow"></span>
-                                <select>
-                                    <option value="#">Michael Pemulis</option>
-                                    <option value="#">Name</option>
-                                </select>
-                            </div>
-                        </li>
-                        <li><span class="primary">Designer</span>
-                            <div class="custom-select">
-                                <span class="dropdown-arrow"></span>
-                                <select>
-                                    <option value="#">Don Gately</option>
-                                    <option value="#">Name</option>
-                                </select>
-                            </div>
-                        </li>
-                        <li><span class="primary">QA</span>
-                            <div class="custom-select">
-                                <span class="dropdown-arrow"></span>
-                                <select>
-                                    <option value="#">Joelle Van Dyne</option>
-                                    <option value="#">Name</option>
-                                </select>
-                            </div>
-                        </li>
-                        <li><span class="primary">DevOps</span>
-                            <div class="custom-select">
-                                <span class="dropdown-arrow"></span>
-                                <select>
-                                    <option value="#">Choose...</option>
-                                    <option value="#">Name</option>
+                                <select th:each = "collab : ${roleCollabElement.value}">
+                                    <option value="#" th:text = "${collab.name}">Michael Pemulis</option>
                                 </select>
                             </div>
                         </li>

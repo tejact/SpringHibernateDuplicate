@@ -14,12 +14,18 @@
                     </div>
                     <div class="roles-collaborators">
                         <h3>Roles &amp; Collaborators</h3>
+                        <!--Iterate over all the roles of the project-->
+                        <!--Then iterate for every role and find the collaborator-->
                         <div class="list-item" th:each="role : ${project.roles}">
                             <div class="project">
                                 <span class="primary" th:text="${role.name}">role</span>
-                                <span class="secondary" th:text="${roleCollaboratorMap?.get(role)?.name}">
-                                    Michael Pemulis
-                                </span>
+                                <div th:each="collab : ${project.collaborators}">
+                                    <div th:if="${collab.role.name} == ${role.name}">
+                                            <span class="secondary" th:text="${collab.name}">
+                                                Name
+                                            </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     <div class="actions">
