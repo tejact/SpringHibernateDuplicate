@@ -43,6 +43,7 @@ public class DataLoader implements ApplicationRunner {
             project.setName("project " + i);
             project.setDescription("description " + i);
             project.setStatus("status " + i);
+            project.setSlug(i + "");
 
             project.addRole(
                     roleDao.findById(i)
