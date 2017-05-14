@@ -99,4 +99,12 @@ public class Project {
         result = 31 * result + name.hashCode();
         return result;
     }
+
+    public void addRole(Role role) {
+        roles.add(role);
+    }
+
+    public void addCollaborator(Collaborator collaborator) {
+        collaborators.add(collaborator);
+    }
 }
