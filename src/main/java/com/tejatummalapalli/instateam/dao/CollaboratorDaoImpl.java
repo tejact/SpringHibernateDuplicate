@@ -31,4 +31,17 @@ public class CollaboratorDaoImpl implements CollaboratorDao {
         session.getTransaction().commit();
         session.close();
     }
+
+    @Override
+    public Collaborator findById(int id) {
+        // Open a session
+        Session session = sessionFactory.openSession();
+
+        // Find a role by id
+        Collaborator collaborator = session.get(Collaborator.class, id);
+
+        // Close session
+        session.close();
+        return collaborator;
+    }
 }

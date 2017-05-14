@@ -8,4 +8,6 @@ public interface CollaboratorDao {
         List<Collaborator> getAllCollaborators();
 
     void addCollaborator(Collaborator collborator);
+
+    Collaborator findById(int id);
 }
