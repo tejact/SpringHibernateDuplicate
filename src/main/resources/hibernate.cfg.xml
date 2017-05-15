@@ -6,10 +6,11 @@
         </property>
 
         <property name="hbm2ddl.auto">
-            update
+            create-drop
         </property>
 
         <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
 
         <mapping class="com.tejatummalapalli.instateam.model.Role"/>
         <mapping class="com.tejatummalapalli.instateam.model.Collaborator"/>

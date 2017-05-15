@@ -32,4 +32,17 @@ public class RoleDaoImpl implements RoleDao {
         session.close();
     }
 
+    @Override
+    public Role findById(int id) {
+        // Open a session
+        Session session = sessionFactory.openSession();
+
+        // Find a role by id
+        Role role = session.get(Role.class, id);
+
+        // Close session
+        session.close();
+        return role;
+    }
+
 }
