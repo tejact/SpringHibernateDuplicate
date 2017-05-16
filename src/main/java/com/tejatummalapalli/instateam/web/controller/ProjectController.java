@@ -1,8 +1,8 @@
 package com.tejatummalapalli.instateam.web.controller;
 
-import com.tejatummalapalli.instateam.model.Collaborator;
 import com.tejatummalapalli.instateam.model.Project;
 import com.tejatummalapalli.instateam.model.Role;
+import com.tejatummalapalli.instateam.service.CollaboratorService;
 import com.tejatummalapalli.instateam.service.ProjectService;
 import com.tejatummalapalli.instateam.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class ProjectController {
@@ -23,6 +22,8 @@ public class ProjectController {
     ProjectService projectService;
     @Autowired
     RoleService roleService;
+    @Autowired
+    CollaboratorService collaboratorService;
 
 
     @RequestMapping(value={"","/","/projects","index"})
@@ -51,7 +52,7 @@ public class ProjectController {
     }
 
     @RequestMapping(value = "/save-project", method = RequestMethod.POST)
-    public String saveProject(@ModelAttribute Project project,Model model){
+    public String saveProject(@ModelAttribute Project project, Model model){
         projectService.saveProject(project);
         return "redirect:/projects";
     }
@@ -61,12 +62,18 @@ public class ProjectController {
         Project project = projectService.findProjectBySlug(slug);
         model.addAttribute("project",project);
 
-        Map<Role, List<Collaborator>> rolesWithCollaborators = projectService.getRoleWithCollaborator(project);
-        model.addAttribute("allRolesWithCollaborators",rolesWithCollaborators);
+        model.addAttribute("allRoles",project.getRoles());
+        model.addAttribute("allCollabs",collaboratorService.getAllCollaborators());
+
         return "project_collaborators";
     }
 
 
+    @RequestMapping(value = "/save-collaborators", method = RequestMethod.POST)
+    public String saveProjectCollaborators(@ModelAttribute Project project, Model model){
+        projectService.saveProject(project);
+        return "redirect:/projects";
+    }
 
 
 }

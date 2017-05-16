@@ -6,19 +6,27 @@
     <nav th:replace="fragments/layout :: nav"/>
         <section>
             <div class="container wrapper">
-                <form>
+                <form th:action="@{|/save-collaborators|}" th:method="post"    th:object="${project}">
                     <label>Edit Collaborators: Website Project</label>
                     <ul class="checkbox-list">
-                        <li><span class="primary" th:each = "roleCollabElement : ${allRolesWithCollaborators}" th:text = "${roleCollabElement.key}">Developer</span>
+                        <li th:each = "role : ${allRoles}">
+                            <span class="primary" th:text ="${role.name}">Developer</span>
                             <div class="custom-select">
                                 <span class="dropdown-arrow"></span>
-                                <select th:each = "collab : ${roleCollabElement.value}">
-                                    <option value="#" th:text = "${collab.name}">Michael Pemulis</option>
+                                <select>
+                                    <option value="#"
+                                            th:field = "*{collaborators}"
+                                            th:each = "collab : ${allCollabs}"
+                                            th:if = "${collab.role.name} == ${role.name}"
+                                            th:text = "${collab.name}">Michael Pemulis
+                                    </option>
                                 </select>
                             </div>
                         </li>
                     </ul>
                     <div class="actions">
+                        <input type="hidden" th:field="*{id}"/>
+                        <input type="hidden" th:field="*{slug}"/>
                         <input type="submit" value="Save" class="button"/>
                         <a href="#" class="button button-secondary">Cancel</a>
                     </div>

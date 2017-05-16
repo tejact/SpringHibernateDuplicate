@@ -31,7 +31,7 @@
                         <label for="project_roles">Project Roles:</label>
 
                         <ul class="checkbox-list">
-                            <li th:each="role,stat : ${allRoles}">
+                            <li th:each="role : ${allRoles}">
                                 <input type="checkbox"
                                        th:value="${role.id}"
                                        th:field="*{roles}"/>
